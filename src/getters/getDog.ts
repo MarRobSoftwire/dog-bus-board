@@ -1,6 +1,9 @@
-export const getDogUrl = async (breed? : string):Promise<string> => {
+import { DogResponse } from "../models/dogResponse"
+
+export const getDogUrl = (breed? : string):Promise<DogResponse> => {
     const url = breed ? `https://dog.ceo/api/breed/${breed}/images/random` : "https://dog.ceo/api/breeds/image/random"
-    const response = await fetch(url);
-    const responseBody: { message: string} = await response.json()
-    return responseBody.message;
+    return fetch(url).then(
+        (response: Response) => response
+            .json()
+    )
 }

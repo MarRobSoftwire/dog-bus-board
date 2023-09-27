@@ -1,4 +1,4 @@
-export const getDogBreeds = async ():Promise<string[]> => (
+export const getDogBreeds = ():Promise<string[]> => (
     fetch("https://dog.ceo/api/breeds/list/all")
         .then((response: Response) => response
             .json()
